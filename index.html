@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enterprise-grade multi-agent AI research system powered by CrewAI and SambaNova AI">
+    <meta name="keywords" content="AI, research, CrewAI, SambaNova, artificial intelligence, multi-agent">
+    <title>CrewAI + SambaNova AI Research Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="app-container">
+    <!-- Skip Navigation Link for Accessibility -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+    
+    <div class="container">
+        <!-- App Header -->
+        <header class="app-header" role="banner">
+            <h1 class="app-header__title">
+                <span role="img" aria-label="Robot">🤖</span>
+                CrewAI + SambaNova AI
+            </h1>
+            <p class="app-header__subtitle">Enterprise Multi-Agent Research Platform</p>
+            <p class="app-header__description">
+                Harness the power of specialized AI agents working in perfect harmony to deliver 
+                comprehensive research insights and professional-grade content
+            </p>
+        </header>
+
+        <!-- Main Content -->
+        <main id="main-content" class="main-card animate-fadeIn" role="main">
+            <!-- Research Form Section -->
+            <section id="form-section" class="section">
+                <div class="section__header">
+                    <h2 class="section__title">Initiate Research Project</h2>
+                    <p class="section__description">
+                        Enter your research topic and watch our AI specialists collaborate to create 
+                        comprehensive, publication-ready content tailored to your needs.
+                    </p>
+                </div>
+
+                <form id="researchForm" class="form" role="form" aria-label="Research topic form">
+                    <div class="form-group">
+                        <label for="topic" class="form-label">Research Topic</label>
+                        <input 
+                            type="text" 
+                            id="topic" 
+                            name="topic" 
+                            class="form-input" 
+                            placeholder="e.g., The transformative impact of artificial intelligence on enterprise operations and strategic decision-making"
+                            required
+                            aria-describedby="topic-help"
+                            autocomplete="off"
+                        >
+                        <div id="topic-help" class="sr-only">
+                            Enter a detailed research topic for our AI agents to analyze and create content about
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn--primary btn--large" id="submitBtn" aria-describedby="submit-help">
+                            <span role="img" aria-hidden="true">🚀</span>
+                            Launch Research Initiative
+                        </button>
+                        <div id="submit-help" class="sr-only">
+                            Start the multi-agent research process for your specified topic
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- AI Agents Section -->
+            <section class="section">
+                <div class="section__header">
+                    <h2 class="section__title">Your AI Research Specialists</h2>
+                    <p class="section__description">
+                        Meet your dedicated team of AI agents, each with specialized expertise and proven methodologies 
+                        for delivering exceptional research outcomes.
+                    </p>
+                </div>
+
+                <div class="agents-grid" role="group" aria-label="AI Research Team">
+                    <div class="agent-card" role="article">
+                        <span class="agent-card__icon" role="img" aria-label="Search and analysis">🔍</span>
+                        <h3 class="agent-card__title">Research Analyst</h3>
+                        <p class="agent-card__description">
+                            Conducts comprehensive data gathering, performs in-depth analysis of market trends, 
+                            and synthesizes complex information into actionable insights with meticulous attention to detail.
+                        </p>
+                    </div>
+                    
+                    <div class="agent-card" role="article">
+                        <span class="agent-card__icon" role="img" aria-label="Writing and content creation">✍️</span>
+                        <h3 class="agent-card__title">Content Strategist</h3>
+                        <p class="agent-card__description">
+                            Transforms research findings into compelling, well-structured narratives that engage audiences 
+                            while maintaining academic rigor and professional standards throughout.
+                        </p>
+                    </div>
+                    
+                    <div class="agent-card" role="article">
+                        <span class="agent-card__icon" role="img" aria-label="Quality assurance">✅</span>
+                        <h3 class="agent-card__title">Quality Assurance Director</h3>
+                        <p class="agent-card__description">
+                            Ensures exceptional quality through comprehensive review processes, fact-checking, 
+                            and enhancement of content clarity, accuracy, and overall impact.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Section (Hidden by default) -->
+            <section id="progress-section" class="section hidden" role="status" aria-live="polite">
+                <div class="progress-section">
+                    <h2 class="progress-title">Research In Progress</h2>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-fill" id="progressBar"></div>
+                        </div>
+                        <p class="progress-text" id="statusText">Initializing research workflow...</p>
+                    </div>
+
+                    <div class="progress-steps">
+                        <div class="progress-step" id="step-research">
+                            <div class="progress-step__icon">
+                                <span role="img" aria-hidden="true">🔍</span>
+                            </div>
+                            <span class="progress-step__label">Research & Analysis</span>
+                        </div>
+                        
+                        <div class="progress-step" id="step-writing">
+                            <div class="progress-step__icon">
+                                <span role="img" aria-hidden="true">✍️</span>
+                            </div>
+                            <span class="progress-step__label">Content Creation</span>
+                        </div>
+                        
+                        <div class="progress-step" id="step-review">
+                            <div class="progress-step__icon">
+                                <span role="img" aria-hidden="true">✅</span>
+                            </div>
+                            <span class="progress-step__label">Quality Review</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section (Hidden by default) -->
+            <section id="results-section" class="section hidden">
+                <div class="results-section">
+                    <h2 class="results-title">
+                        <span role="img" aria-hidden="true">✨</span>
+                        Research Results
+                    </h2>
+                    
+                    <div class="results-content" id="resultContent" role="document" aria-label="Research results">
+                        <!-- Results will be populated here -->
+                    </div>
+
+                    <div class="results-actions">
+                        <button class="btn btn--primary" onclick="startNewResearch()" aria-label="Start a new research project">
+                            <span role="img" aria-hidden="true">🔄</span>
+                            New Research Project
+                        </button>
+                        <button class="btn btn--secondary" onclick="copyResults()" aria-label="Copy results to clipboard">
+                            <span role="img" aria-hidden="true">📋</span>
+                            Copy Results
+                        </button>
+                        <button class="btn btn--secondary" onclick="exportResults()" aria-label="Export results as document">
+                            <span role="img" aria-hidden="true">💾</span>
+                            Export Results
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Section (Hidden by default) -->
+            <section id="error-section" class="section hidden" role="alert" aria-live="assertive">
+                <div class="error-section">
+                    <h2 class="error-title">
+                        <span role="img" aria-label="Error">⚠️</span>
+                        Research Process Interrupted
+                    </h2>
+                    
+                    <p class="error-message" id="errorText">
+                        <!-- Error message will be populated here -->
+                    </p>
+
+                    <div class="results-actions">
+                        <button class="btn btn--primary" onclick="startNewResearch()" aria-label="Try research again">
+                            <span role="img" aria-hidden="true">🔄</span>
+                            Try Again
+                        </button>
+                        <button class="btn btn--secondary" onclick="testAPIConnection()" aria-label="Test API connection">
+                            <span role="img" aria-hidden="true">🔧</span>
+                            Test Connection
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- App Footer -->
+        <footer class="app-footer" role="contentinfo">
+            <div class="app-footer__content">
+                <p>
+                    Powered by <strong>SambaNova AI</strong> &amp; <strong>CrewAI</strong> | 
+                    Enterprise-grade AI research platform
+                </p>
+            </div>
+            
+            <div class="app-footer__actions">
+                <button class="btn btn--success btn--small" onclick="testAPIConnection()" aria-label="Test SambaNova API connection">
+                    <span role="img" aria-hidden="true">🔌</span>
+                    API Status Check
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true">
+        <!-- Toast notifications will be inserted here -->
+    </div>
+
+    <script>
+        // ===================================
+        // ENTERPRISE APPLICATION CONTROLLER
+        // ===================================
+
+        class ResearchApplication {
+            constructor() {
+                this.currentTaskId = null;
+                this.statusCheckInterval = null;
+                this.currentStep = 0;
+                this.steps = ['research', 'writing', 'review'];
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.validateEnvironment();
+                this.showToast('Application ready', 'success');
+            }
+
+            bindEvents() {
+                const form = document.getElementById('researchForm');
+                form.addEventListener('submit', (e) => this.handleFormSubmit(e));
+                
+                // Add keyboard shortcuts
+                document.addEventListener('keydown', (e) => this.handleKeyboardShortcuts(e));
+                
+                // Add focus management
+                this.manageFocus();
+            }
+
+            handleKeyboardShortcuts(e) {
+                // Ctrl/Cmd + Enter to submit form
+                if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                    e.preventDefault();
+                    const submitBtn = document.getElementById('submitBtn');
+                    if (!submitBtn.disabled) {
+                        submitBtn.click();
+                    }
+                }
+                
+                // Escape to cancel/reset
+                if (e.key === 'Escape') {
+                    if (this.currentTaskId) {
+                        this.handleCancel();
+                    }
+                }
+            }
+
+            manageFocus() {
+                // Ensure proper focus management for accessibility
+                const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+                const modal = document.querySelector('.modal');
+                
+                if (modal) {
+                    const focusableContent = modal.querySelectorAll(focusableElements);
+                    const firstFocusableElement = focusableContent[0];
+                    const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+                    modal.addEventListener('keydown', (e) => {
+                        if (e.key === 'Tab') {
+                            if (e.shiftKey) {
+                                if (document.activeElement === firstFocusableElement) {
+                                    lastFocusableElement.focus();
+                                    e.preventDefault();
+                                }
+                            } else {
+                                if (document.activeElement === lastFocusableElement) {
+                                    firstFocusableElement.focus();
+                                    e.preventDefault();
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            validateEnvironment() {
+                // Validate that the application environment is ready
+                if (!window.fetch) {
+                    this.showToast('Browser not supported. Please update your browser.', 'error');
+                    return false;
+                }
+                return true;
+            }
+
+            async handleFormSubmit(e) {
+                e.preventDefault();
+                
+                const topic = document.getElementById('topic').value.trim();
+                if (!topic) {
+                    this.showToast('Please enter a research topic', 'warning');
+                    document.getElementById('topic').focus();
+                    return;
+                }
+
+                if (topic.length < 10) {
+                    this.showToast('Please provide a more detailed research topic (minimum 10 characters)', 'warning');
+                    document.getElementById('topic').focus();
+                    return;
+                }
+
+                await this.startResearch(topic);
+            }
+
+            async startResearch(topic) {
+                try {
+                    this.showProgressSection();
+                    this.updateProgress('Initializing research workflow...', 0);
+                    this.showToast('Research project initiated', 'info');
+
+                    const response = await fetch('/start_research', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `topic=${encodeURIComponent(topic)}`
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    
+                    if (data.error) {
+                        throw new Error(data.error);
+                    }
+
+                    this.currentTaskId = data.task_id;
+                    this.updateProgress('Research Analyst gathering comprehensive data...', 15);
+                    this.setActiveStep(0);
+                    
+                    // Start status monitoring
+                    this.statusCheckInterval = setInterval(() => this.checkStatus(), 2000);
+
+                } catch (error) {
+                    console.error('Research initiation failed:', error);
+                    this.showError(`Failed to start research: ${error.message}`);
+                    this.showToast('Failed to start research project', 'error');
+                }
+            }
+
+            async checkStatus() {
+                if (!this.currentTaskId) return;
+
+                try {
+                    const response = await fetch(`/check_status/${this.currentTaskId}`);
+                    
+                    if (!response.ok) {
+                        throw new Error(`Status check failed: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+
+                    switch (data.status) {
+                        case 'completed':
+                            this.handleCompletion(data.result);
+                            break;
+                        case 'error':
+                            this.handleError(data.error);
+                            break;
+                        case 'processing':
+                            this.handleProcessing();
+                            break;
+                        default:
+                            this.updateProgress('Processing...', Math.min(90, 20 + Math.random() * 40));
+                    }
+                    
+                } catch (error) {
+                    console.error('Status check failed:', error);
+                    this.handleError(`Status monitoring failed: ${error.message}`);
+                }
+            }
+
+            handleCompletion(result) {
+                clearInterval(this.statusCheckInterval);
+                this.statusCheckInterval = null;
+                
+                this.updateProgress('Research project completed successfully!', 100);
+                this.setActiveStep(2, true);
+                
+                setTimeout(() => {
+                    this.showResults(result);
+                    this.showToast('Research completed successfully!', 'success');
+                }, 1500);
+            }
+
+            handleError(error) {
+                if (this.statusCheckInterval) {
+                    clearInterval(this.statusCheckInterval);
+                    this.statusCheckInterval = null;
+                }
+                
+                this.showError(error);
+                this.showToast('Research process encountered an error', 'error');
+            }
+
+            handleProcessing() {
+                // Simulate progressive status updates
+                const progress = Math.min(85, 25 + Math.random() * 45);
+                
+                if (progress < 40) {
+                    this.updateProgress('Research Analyst analyzing data and trends...', progress);
+                    this.setActiveStep(0);
+                } else if (progress < 70) {
+                    this.updateProgress('Content Strategist crafting comprehensive content...', progress);
+                    this.setActiveStep(1);
+                } else {
+                    this.updateProgress('Quality Assurance Director reviewing and polishing...', progress);
+                    this.setActiveStep(2);
+                }
+            }
+
+            handleCancel() {
+                if (this.statusCheckInterval) {
+                    clearInterval(this.statusCheckInterval);
+                    this.statusCheckInterval = null;
+                }
+                
+                this.currentTaskId = null;
+                this.startNewResearch();
+                this.showToast('Research process cancelled', 'info');
+            }
+
+            showProgressSection() {
+                this.hideAllSections();
+                document.getElementById('progress-section').classList.remove('hidden');
+                document.getElementById('progress-section').classList.add('animate-fadeIn');
+            }
+
+            showResults(result) {
+                this.hideAllSections();
+                const resultsSection = document.getElementById('results-section');
+                const resultContent = document.getElementById('resultContent');
+                
+                resultContent.textContent = result;
+                resultsSection.classList.remove('hidden');
+                resultsSection.classList.add('animate-fadeIn');
+                
+                // Focus management for accessibility
+                resultsSection.querySelector('.results-title').focus();
+            }
+
+            showError(error) {
+                this.hideAllSections();
+                const errorSection = document.getElementById('error-section');
+                const errorText = document.getElementById('errorText');
+                
+                errorText.textContent = error;
+                errorSection.classList.remove('hidden');
+                errorSection.classList.add('animate-fadeIn');
+                
+                // Focus management for accessibility
+                errorSection.querySelector('.error-title').focus();
+            }
+
+            hideAllSections() {
+                const sections = ['form-section', 'progress-section', 'results-section', 'error-section'];
+                sections.forEach(id => {
+                    const element = document.getElementById(id);
+                    element.classList.add('hidden');
+                    element.classList.remove('animate-fadeIn');
+                });
+            }
+
+            updateProgress(text, progress) {
+                const progressBar = document.getElementById('progressBar');
+                const statusText = document.getElementById('statusText');
+                
+                if (progressBar) progressBar.style.width = `${progress}%`;
+                if (statusText) statusText.textContent = text;
+                
+                // Update ARIA attributes for accessibility
+                const progressBarContainer = document.querySelector('.progress-bar');
+                if (progressBarContainer) {
+                    progressBarContainer.setAttribute('aria-valuenow', progress);
+                }
+            }
+
+            setActiveStep(stepIndex, completed = false) {
+                // Reset all steps
+                document.querySelectorAll('.progress-step').forEach(step => {
+                    step.classList.remove('progress-step--active', 'progress-step--completed');
+                });
+
+                // Set completed steps
+                for (let i = 0; i < stepIndex; i++) {
+                    const step = document.getElementById(`step-${this.steps[i]}`);
+                    if (step) step.classList.add('progress-step--completed');
+                }
+
+                // Set active step
+                const activeStep = document.getElementById(`step-${this.steps[stepIndex]}`);
+                if (activeStep) {
+                    if (completed) {
+                        activeStep.classList.add('progress-step--completed');
+                    } else {
+                        activeStep.classList.add('progress-step--active');
+                    }
+                }
+            }
+
+            startNewResearch() {
+                this.currentTaskId = null;
+                this.currentStep = 0;
+                
+                if (this.statusCheckInterval) {
+                    clearInterval(this.statusCheckInterval);
+                    this.statusCheckInterval = null;
+                }
+
+                this.hideAllSections();
+                document.getElementById('form-section').classList.remove('hidden');
+                document.getElementById('topic').value = '';
+                document.getElementById('topic').focus();
+            }
+
+            async copyResults() {
+                const resultContent = document.getElementById('resultContent');
+                if (!resultContent) return;
+
+                try {
+                    await navigator.clipboard.writeText(resultContent.textContent);
+                    this.showToast('Results copied to clipboard', 'success');
+                } catch (error) {
+                    this.showToast('Failed to copy results', 'error');
+                }
+            }
+
+            exportResults() {
+                const resultContent = document.getElementById('resultContent');
+                if (!resultContent) return;
+
+                const blob = new Blob([resultContent.textContent], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `research-results-${new Date().toISOString().split('T')[0]}.txt`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                this.showToast('Results exported successfully', 'success');
+            }
+
+            async testAPIConnection() {
+                try {
+                    this.showToast('Testing API connection...', 'info');
+                    
+                    const response = await fetch('/test_api');
+                    const data = await response.json();
+                    
+                    if (data.status === 'success') {
+                        this.showToast('API connection successful', 'success');
+                    } else {
+                        this.showToast(`API test failed: ${data.error}`, 'error');
+                    }
+                } catch (error) {
+                    this.showToast(`API test failed: ${error.message}`, 'error');
+                }
+            }
+
+            showToast(message, type = 'info') {
+                const container = document.getElementById('toast-container');
+                if (!container) return;
+
+                const toast = document.createElement('div');
+                toast.className = `toast toast--${type}`;
+                toast.setAttribute('role', 'alert');
+                toast.setAttribute('aria-live', 'polite');
+                
+                const icons = {
+                    success: '✅',
+                    error: '❌',
+                    warning: '⚠️',
+                    info: 'ℹ️'
+                };
+
+                toast.innerHTML = `
+                    <span class="toast__icon" role="img" aria-hidden="true">${icons[type] || icons.info}</span>
+                    <span class="toast__message">${message}</span>
+                    <button class="toast__close" onclick="this.parentElement.remove()" aria-label="Close notification">×</button>
+                `;
+
+                container.appendChild(toast);
+
+                // Auto-remove after 5 seconds
+                setTimeout(() => {
+                    if (toast.parentElement) {
+                        toast.remove();
+                    }
+                }, 5000);
+            }
+        }
+
+        // Initialize application
+        let app;
+        document.addEventListener('DOMContentLoaded', () => {
+            app = new EnhancedResearchApplication();
+        });
+
+        // ===================================
+        // PERFORMANCE MONITORING & ANALYTICS
+        // ===================================
+        
+        class PerformanceMonitor {
+            constructor() {
+                this.metrics = {
+                    pageLoadTime: 0,
+                    apiResponseTimes: [],
+                    userInteractions: 0,
+                    errorCount: 0
+                };
+                this.init();
+            }
+
+            init() {
+                this.trackPageLoad();
+                this.trackUserInteractions();
+                this.trackErrors();
+            }
+
+            trackPageLoad() {
+                window.addEventListener('load', () => {
+                    const perfData = performance.getEntriesByType('navigation')[0];
+                    this.metrics.pageLoadTime = perfData.loadEventEnd - perfData.loadEventStart;
+                    
+                    // Report to analytics (simulated)
+                    console.info('Page load time:', this.metrics.pageLoadTime + 'ms');
+                });
+            }
+
+            trackUserInteractions() {
+                document.addEventListener('click', () => {
+                    this.metrics.userInteractions++;
+                });
+            }
+
+            trackErrors() {
+                window.addEventListener('error', (e) => {
+                    this.metrics.errorCount++;
+                    console.error('Application error:', e.error);
+                });
+            }
+
+            trackApiCall(duration) {
+                this.metrics.apiResponseTimes.push(duration);
+            }
+
+            getMetrics() {
+                return {
+                    ...this.metrics,
+                    avgApiResponseTime: this.metrics.apiResponseTimes.reduce((a, b) => a + b, 0) / this.metrics.apiResponseTimes.length || 0
+                };
+            }
+        }
+
+        // ===================================
+        // ENHANCED RESEARCH APPLICATION
+        // ===================================
+        
+        class EnhancedResearchApplication extends ResearchApplication {
+            constructor() {
+                super();
+                this.performanceMonitor = new PerformanceMonitor();
+                this.searchHistory = JSON.parse(localStorage.getItem('researchHistory') || '[]');
+                this.initEnterpriseFeatures();
+            }
+
+            initEnterpriseFeatures() {
+                this.createSearchHistory();
+                this.initKeyboardShortcuts();
+                this.initOfflineSupport();
+                this.setupAnalytics();
+            }
+
+            createSearchHistory() {
+                if (!document.getElementById('search-history')) {
+                    const historyContainer = document.createElement('div');
+                    historyContainer.id = 'search-history';
+                    historyContainer.className = 'search-history';
+                    historyContainer.innerHTML = `
+                        <h3>Recent Research Topics</h3>
+                        <div class="history-list" id="historyList"></div>
+                        <button class="btn btn--small btn--secondary" onclick="app.clearHistory()">Clear History</button>
+                    `;
+                    
+                    const formSection = document.getElementById('form-section');
+                    formSection.appendChild(historyContainer);
+                }
+                
+                this.updateHistoryDisplay();
+            }
+
+            updateHistoryDisplay() {
+                const historyList = document.getElementById('historyList');
+                if (!historyList) return;
+
+                if (this.searchHistory.length === 0) {
+                    historyList.innerHTML = '<p class="text-muted">No recent searches</p>';
+                    return;
+                }
+
+                historyList.innerHTML = this.searchHistory
+                    .slice(-5) // Show last 5 searches
+                    .reverse()
+                    .map((item, index) => `
+                        <div class="history-item" onclick="app.useHistoryItem('${item.topic.replace(/'/g, "\\'")}')">
+                            <div class="history-topic">${item.topic}</div>
+                            <div class="history-date">${new Date(item.timestamp).toLocaleDateString()}</div>
+                        </div>
+                    `).join('');
+            }
+
+            useHistoryItem(topic) {
+                document.getElementById('topic').value = topic;
+                this.showToast('Topic loaded from history', 'info');
+            }
+
+            clearHistory() {
+                this.searchHistory = [];
+                localStorage.removeItem('researchHistory');
+                this.updateHistoryDisplay();
+                this.showToast('Search history cleared', 'info');
+            }
+
+            initKeyboardShortcuts() {
+                document.addEventListener('keydown', (e) => {
+                    // Ctrl/Cmd + / for help
+                    if ((e.ctrlKey || e.metaKey) && e.key === '/') {
+                        e.preventDefault();
+                        this.showShortcutsModal();
+                    }
+                });
+            }
+
+            showShortcutsModal() {
+                const modal = document.createElement('div');
+                modal.className = 'modal-overlay';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <h3>Keyboard Shortcuts</h3>
+                        <div class="shortcuts-grid">
+                            <div class="shortcut-item">
+                                <kbd>Ctrl/Cmd + Enter</kbd>
+                                <span>Start Research</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <kbd>Escape</kbd>
+                                <span>Cancel/Reset</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <kbd>Ctrl/Cmd + /</kbd>
+                                <span>Show Shortcuts</span>
+                            </div>
+                        </div>
+                        <button class="btn btn--primary" onclick="this.parentElement.parentElement.remove()">Got it</button>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) modal.remove();
+                });
+            }
+
+            initOfflineSupport() {
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register('/sw.js').catch(console.error);
+                }
+
+                window.addEventListener('online', () => {
+                    this.showToast('Connection restored', 'success');
+                });
+
+                window.addEventListener('offline', () => {
+                    this.showToast('Working offline - some features may be limited', 'warning');
+                });
+            }
+
+            setupAnalytics() {
+                // Performance tracking
+                this.trackPerformanceMetrics();
+                
+                // User behavior analytics (privacy-conscious)
+                this.trackUserBehavior();
+            }
+
+            trackPerformanceMetrics() {
+                if ('performance' in window) {
+                    const observer = new PerformanceObserver((list) => {
+                        list.getEntries().forEach((entry) => {
+                            console.info(`Performance: ${entry.name} - ${entry.duration}ms`);
+                        });
+                    });
+                    
+                    observer.observe({ entryTypes: ['measure'] });
+                }
+            }
+
+            trackUserBehavior() {
+                // Track feature usage (anonymized)
+                const features = ['start_research', 'copy_results', 'export_results', 'api_test'];
+                
+                features.forEach(feature => {
+                    const elements = document.querySelectorAll(`[onclick*="${feature}"]`);
+                    elements.forEach(el => {
+                        el.addEventListener('click', () => {
+                            console.info(`Feature used: ${feature}`);
+                        });
+                    });
+                });
+            }
+
+            async startResearch(topic) {
+                const startTime = performance.now();
+                
+                // Add to search history
+                this.searchHistory.push({
+                    topic,
+                    timestamp: Date.now(),
+                    id: Math.random().toString(36).substr(2, 9)
+                });
+                
+                // Keep only last 20 searches
+                if (this.searchHistory.length > 20) {
+                    this.searchHistory = this.searchHistory.slice(-20);
+                }
+                
+                localStorage.setItem('researchHistory', JSON.stringify(this.searchHistory));
+                this.updateHistoryDisplay();
+
+                try {
+                    await super.startResearch(topic);
+                    
+                    const duration = performance.now() - startTime;
+                    this.performanceMonitor.trackApiCall(duration);
+                    
+                } catch (error) {
+                    console.error('Research failed:', error);
+                    throw error;
+                }
+            }
+
+            showResults(result) {
+                super.showResults(result);
+                
+                // Add result metadata
+                const resultsSection = document.getElementById('results-section');
+                const metadata = document.createElement('div');
+                metadata.className = 'results-metadata';
+                metadata.innerHTML = `
+                    <div class="metadata-grid">
+                        <div class="metadata-item">
+                            <span class="metadata-label">Generated:</span>
+                            <span class="metadata-value">${new Date().toLocaleString()}</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Word Count:</span>
+                            <span class="metadata-value">${result.split(' ').length.toLocaleString()}</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Character Count:</span>
+                            <span class="metadata-value">${result.length.toLocaleString()}</span>
+                        </div>
+                    </div>
+                `;
+                
+                const resultsContent = document.getElementById('resultContent');
+                resultsContent.parentNode.insertBefore(metadata, resultsContent);
+            }
+        }
+
+        // Global functions for backward compatibility and external access
+        function startNewResearch() { app.startNewResearch(); }
+        function copyResults() { app.copyResults(); }
+        function exportResults() { app.exportResults(); }
+        function testAPIConnection() { app.testAPIConnection(); }
+    </script>
+
+    <!-- Toast Styles -->
+    <style>
+        .toast-container {
+            position: fixed;
+            top: var(--space-4);
+            right: var(--space-4);
+            z-index: var(--z-toast);
+            max-width: 400px;
+        }
+
+        .toast {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            margin-bottom: var(--space-3);
+            background: var(--neutral-0);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            border-left: 4px solid;
+            animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toast--success { border-left-color: var(--success-500); }
+        .toast--error { border-left-color: var(--error-500); }
+        .toast--warning { border-left-color: var(--warning-500); }
+        .toast--info { border-left-color: var(--primary-500); }
+
+        .toast__icon {
+            font-size: var(--font-size-lg);
+            flex-shrink: 0;
+        }
+
+        .toast__message {
+            flex: 1;
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--neutral-700);
+        }
+
+        .toast__close {
+            background: none;
+            border: none;
+            font-size: var(--font-size-xl);
+            color: var(--neutral-400);
+            cursor: pointer;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-base);
+            transition: all var(--transition-fast);
+        }
+
+        .toast__close:hover {
+            background: var(--neutral-100);
+            color: var(--neutral-600);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @media (max-width: 480px) {
+            .toast-container {
+                left: var(--space-4);
+                right: var(--space-4);
+                max-width: none;
+            }
+        }
+    </style>
+</body>
+</html>
